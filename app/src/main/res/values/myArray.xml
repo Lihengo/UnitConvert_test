@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="category_name">
+        <item>Length</item>
+        <item>Mass</item>
+        <item>Time</item>
+        <item>ElectricCurrent</item>
+        <item>Temperature</item>
+    </string-array>
+
+    <string-array name="category_index">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
+    <string-array name="length_unitName">
+        <item>m</item>
+        <item>Mm</item>
+        <item>km</item>
+        <item>dm</item>
+        <item>cm</item>
+        <item>mm</item>
+        <item>\u03BCm</item>
+        <item>nm</item>
+        <item>pm</item>
+        <item>fm</item>
+        <item>am</item>
+        <item>ly</item>
+        <item>mile</item>
+        <item>yard</item>
+        <item>foot</item>
+        <item>inch</item>
+        <item>Gm</item>
+        <item>Tm</item>
+        <item>Pm</item>
+        <item>Em</item>
+        <item>Zm</item>
+
+    </string-array>
+
+    <string-array name="length_unitValue">
+        <item>1</item>
+        <item>1e6</item>
+        <item>1e3</item>
+        <item>0.1</item>
+        <item>0.01</item>
+        <item>0.001</item>
+        <item>1e-6</item>
+        <item>1e-9</item>
+        <item>1e-12</item>
+        <item>1e-15</item>
+        <item>1e-18</item>
+        <item>9.46e15</item>
+        <item>1609.344</item>
+        <item>0.9144</item>
+        <item>0.3048</item>
+        <item>0.0254</item>
+        <item>1e9</item>
+        <item>1e12</item>
+        <item>1e15</item>
+        <item>1e18</item>
+        <item>1e21</item>
+
+    </string-array>
+
+    <string-array name="mass_unitName">
+        <item>kg</item>
+        <item>g</item>
+        <item>mg</item>
+        <item>\u03BC</item>
+        <item>t</item>
+        <item>ton</item>
+        <item>ton</item>
+        <item>lb</item>
+        <item>oz</item>
+        <item>ct</item>
+        <item>st</item>
+    </string-array>
+
+    <string-array name="mass_unitValue">
+        <item>1</item>
+        <item>0.001</item>
+        <item>1e-6</item>
+        <item>1e-9</item>
+        <item>1000</item>
+        <item>907.18474</item>
+        <item>1016.047</item>
+        <item>0.45359237</item>
+        <item>0.0283495231</item>
+        <item>0.0002</item>
+        <item>6.35029318</item>
+    </string-array>
+
+    <string-array name="time_unitName">
+        <item>sec</item>
+        <item>min</item>
+        <item>hr</item>
+        <item>ms</item>
+        <item>\u03BCs</item>
+        <item>ns</item>
+        <item>ps</item>
+        <item>fs</item>
+        <item>as</item>
+        <item>day</item>
+        <item>week</item>
+        <item>month</item>
+        <item>year</item>
+        <item>decade</item>
+        <item>century</item>
+        <item>millennium</item>
+    </string-array>
+
+    <string-array name="time_unitValue">
+        <item>1</item>
+        <item>60</item>
+        <item>3600</item>
+        <item>0.001</item>
+        <item>1e-6</item>
+        <item>1e-9</item>
+        <item>1e-12</item>
+        <item>1e-15</item>
+        <item>1e-15</item>
+        <item>86400</item>
+        <item>604800</item>
+        <item>2628000</item>
+        <item>31536000</item>
+        <item>315360000</item>
+        <item>3153600000</item>
+        <item>31536000000</item>
+    </string-array>
+
+    <string-array name="current_unitName">
+        <item>A</item>
+        <item>mA</item>
+        <item>\u03BCA</item>
+    </string-array>
+
+    <string-array name="current_unitValue">
+        <item>1</item>
+        <item>1e-3</item>
+        <item>1e-6</item>
+    </string-array>
+
+    <string-array name="temperature_unitName">
+        <item>K</item>
+        <item>\u2103</item>
+        <item>\u2109</item>
+    </string-array>
+
+    <string-array name="temperature_unitValue">
+        <item>10</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+
+</resources>
