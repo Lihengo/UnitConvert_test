@@ -250,6 +250,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Adap
         Toast.makeText(mContext,"index~："+indexCategory+" "+inputUnitList.size(),Toast.LENGTH_SHORT).show();
         spin_in.setAdapter(myAdapter_in);
         spin_out.setAdapter(myAdapter_out);
+        clear_num();
 
     }
 
@@ -467,6 +468,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Adap
 
     private void clear_num(){
         input_txt="0";
+        output_txt="0";
         input_num= new BigDecimal("0");
         counter_decimalDigit = 0;
         counter_integerDigit = 0;
@@ -474,6 +476,8 @@ public class MainActivity extends Activity implements View.OnClickListener, Adap
         tenToPow = 0;
         isDotLocked = false;
         isScientificLocked = false;
+        scrn_input.setText(input_txt);
+        scrn_output.setText(output_txt);
         return;
     }
     //--------------------------------------------------------8-31
@@ -514,28 +518,28 @@ public class MainActivity extends Activity implements View.OnClickListener, Adap
             if(formula == 1){
                 res_str = in_num.toPlainString();
             }
-            else if(formula == 0.5){
+            else if(formula == 2){ //from Fahrenheit  to  Celsius
                 res_num = (in_num.subtract(thirty_two)).divide(one_eight, 2, RoundingMode.HALF_UP);
                 res_str = format_dot(res_num, 2);
             }
-            else if(formula == 0.1){
-                res_num = in_num.subtract(two_hun);
+            else if(formula == 0.2){//from Fahrenheit  to Kelvin
+                res_num = (in_num.subtract(thirty_two)).divide(one_eight, 2, RoundingMode.HALF_UP).add(two_hun);
                 res_str = format_dot(res_num, 2);
             }
-            else if(formula == 0.2){
-                res_num = in_num.multiply(one_eight).subtract(four_hun);
-                res_str = format_dot(res_num, 2);
-            }
-            else if(formula == 2){
+            else if(formula == 0.5){//from Celsius  to Fahrenheit
                 res_num = in_num.multiply(one_eight).add(thirty_two);
                 res_str = format_dot(res_num, 2);
             }
-            else if(formula == 10){
+            else if(formula == 0.1){//from Celsius  to Kelvin
                 res_num = in_num.add(two_hun);
                 res_str = format_dot(res_num, 2);
             }
-            else if(formula == 5){
-                res_num = in_num.add(four_hun).divide(one_eight, 2, RoundingMode.HALF_UP);
+            else if(formula == 10){//from Kelvin to Celsius
+                res_num = in_num.subtract(two_hun);
+                res_str = format_dot(res_num, 2);
+            }
+            else if(formula == 5){//from Kelvin to Fahrenheit
+                res_num = in_num.subtract(two_hun).multiply(one_eight).add(thirty_two);
                 res_str = format_dot(res_num, 2);
             }
         }
