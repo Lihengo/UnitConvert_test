@@ -9,7 +9,7 @@
         android:text="Category"
         android:textSize="50dp"
         android:textColor="#fff5b2"
-        android:background="#8a99ff"/>
+        android:background="@color/drawerTitle_background"/>
 
     <ListView
         android:id="@+id/list_right_drawer"
@@ -20,6 +20,6 @@
         android:choiceMode="singleChoice"
         android:divider="#d1cccc"
         android:dividerHeight="1dp"
-        android:listSelector="#fff5b2"/>
+        android:listSelector="@color/drawerItemSelected_background"/>
 
 </LinearLayout>

@@ -3,4 +3,10 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="topbar_background">#2d65c7</color>
+    <color name="display_background">#87ff5c</color>
+    <color name="pannel_background">#7b0029</color>
+    <color name="drawerTitle_background">#8a99ff</color>
+    <color name="drawerItemSelected_background">#ffe431</color>
 </resources>

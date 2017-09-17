@@ -15,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -37,7 +38,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Adap
     private ListView rightListDrawer;
 
     private TextView topbar_name;
-    private Button topbar_btn;
+    private ImageButton topbar_btn;
 
     private EditText scrn_input;
     private EditText scrn_output;
@@ -119,7 +120,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Adap
         outputUnitList = new ArrayList<Unit>();
         categoryList = new ArrayList<Unit>();
 
-        topbar_btn = (Button) findViewById(R.id.topbar_btn);
+        topbar_btn = (ImageButton) findViewById(R.id.topbar_btn);
         topbar_name = (TextView) findViewById(R.id.topbar_name);
 
         scrn_input = (EditText) findViewById(R.id.scrn_input);
@@ -250,6 +251,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Adap
         Toast.makeText(mContext,"index~："+indexCategory+" "+inputUnitList.size(),Toast.LENGTH_SHORT).show();
         spin_in.setAdapter(myAdapter_in);
         spin_out.setAdapter(myAdapter_out);
+        drawer_layout.closeDrawer(Gravity.START);
         clear_num();
 
     }

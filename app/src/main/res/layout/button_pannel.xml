@@ -9,7 +9,7 @@
         android:layout_weight="1"
         android:columnCount="4"
         android:orientation="horizontal"
-        android:background="#13237c"
+        android:background="@color/pannel_background"
         android:rowCount="6" >
 
         <Button
@@ -17,7 +17,7 @@
             android:layout_columnSpan="1"
             android:layout_height="75dp"
             android:textColor="#ffffff"
-            android:background="#13237c"
+            android:background="@color/pannel_background"
             android:textSize="20dp"
             android:text="7" />
 
@@ -26,7 +26,7 @@
             android:layout_columnSpan="1"
             android:layout_height="75dp"
             android:textColor="#ffffff"
-            android:background="#13237c"
+            android:background="@color/pannel_background"
             android:textSize="20dp"
             android:text="8" />
 
@@ -35,7 +35,7 @@
             android:layout_columnSpan="1"
             android:layout_height="75dp"
             android:textColor="#ffffff"
-            android:background="#13237c"
+            android:background="@color/pannel_background"
             android:textSize="20dp"
             android:text="9" />
 
@@ -45,7 +45,7 @@
             android:layout_columnSpan="1"
             android:layout_height="75dp"
             android:layout_gravity="fill"
-            android:background="#13237c"
+            android:background="@color/pannel_background"
             android:textColor="#ffffff"
             android:textSize="20dp"
             android:text="CLR" />
@@ -55,7 +55,7 @@
             android:layout_columnSpan="1"
             android:layout_height="75dp"
             android:textColor="#ffffff"
-            android:background="#13237c"
+            android:background="@color/pannel_background"
             android:textSize="20dp"
             android:text="4" />
 
@@ -64,7 +64,7 @@
             android:layout_columnSpan="1"
             android:layout_height="75dp"
             android:textColor="#ffffff"
-            android:background="#13237c"
+            android:background="@color/pannel_background"
             android:textSize="20dp"
             android:text="5" />
 
@@ -73,7 +73,7 @@
             android:layout_columnSpan="1"
             android:layout_height="75dp"
             android:textColor="#ffffff"
-            android:background="#13237c"
+            android:background="@color/pannel_background"
             android:textSize="20dp"
             android:text="6" />
 
@@ -83,7 +83,7 @@
             android:layout_height="75dp"
             android:layout_gravity="fill"
             android:textColor="#ffffff"
-            android:background="#13237c"
+            android:background="@color/pannel_background"
             android:textSize="20dp"
             android:text="BACK"
             android:layout_width="118dp" />
@@ -93,7 +93,7 @@
             android:layout_columnSpan="1"
             android:layout_height="75dp"
             android:textColor="#ffffff"
-            android:background="#13237c"
+            android:background="@color/pannel_background"
             android:textSize="20dp"
             android:text="1" />
 
@@ -102,7 +102,7 @@
             android:layout_columnSpan="1"
             android:layout_height="75dp"
             android:textColor="#ffffff"
-            android:background="#13237c"
+            android:background="@color/pannel_background"
             android:textSize="20dp"
             android:text="2" />
 
@@ -111,7 +111,7 @@
             android:layout_columnSpan="1"
             android:layout_height="75dp"
             android:textColor="#ffffff"
-            android:background="#13237c"
+            android:background="@color/pannel_background"
             android:textSize="20dp"
             android:text="3" />
 
@@ -121,7 +121,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_height="75dp"
             android:textColor="#ffffff"
-            android:background="#13237c"
+            android:background="@color/pannel_background"
             android:textSize="20dp"
             android:text="+/-"
             android:layout_width="118dp" />
@@ -132,7 +132,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_height="75dp"
             android:textColor="#ffffff"
-            android:background="#13237c"
+            android:background="@color/pannel_background"
             android:textSize="20dp"
             android:text="x10" />
 
@@ -142,7 +142,7 @@
             android:layout_columnSpan="1"
             android:layout_height="75dp"
             android:textColor="#ffffff"
-            android:background="#13237c"
+            android:background="@color/pannel_background"
             android:textSize="20dp"
             android:text="0" />
 
@@ -151,7 +151,7 @@
             android:layout_columnSpan="1"
             android:layout_height="75dp"
             android:textColor="#ffffff"
-            android:background="#13237c"
+            android:background="@color/pannel_background"
             android:textSize="20dp"
             android:text="." />
 
@@ -160,7 +160,7 @@
             android:layout_columnSpan="1"
             android:layout_height="75dp"
             android:textColor="#ffffff"
-            android:background="#13237c"
+            android:background="@color/pannel_background"
             android:textSize="20dp"
             android:text=""
             android:layout_width="104dp" />

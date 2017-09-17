@@ -3,20 +3,22 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#8e8e8e">
+    android:background="@color/topbar_background">
 
-    <Button
+    <ImageButton
         android:id="@+id/topbar_btn"
         android:layout_width="54dp"
         android:layout_height="match_parent"
-        android:background="@mipmap/topbar_category_white" />
+        android:src="@mipmap/topbar_category_white"
+        android:background="@color/topbar_background"/>
 
     <TextView
         android:id="@+id/topbar_name"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center_vertical"
         android:text="Length"
         android:textColor="#fff6f6"
-        android:textSize="35dp" />
+        android:textSize="25dp" />
 
 </LinearLayout>
