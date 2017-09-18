@@ -14,8 +14,8 @@
     android:id="@+id/linearLayout">
     <EditText
         android:id="@+id/scrn_input"
-        android:layout_width="291dp"
-        android:layout_height="90dp"
+        android:layout_width="300dp"
+        android:layout_height="75dp"
         android:layout_gravity="fill"
         android:editable="false"
         android:background="@color/display_background"
@@ -30,14 +30,15 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
-    <Spinner
-        android:id="@+id/spinner_inputUnit"
+
+
+    <Button
+        android:id="@+id/btn_in_test"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:text="m"
         android:background="@color/display_background"
-        android:dropDownWidth="100dp"
-        android:spinnerMode="dialog"
-        android:layout_alignParentTop="true" />
+        android:textAllCaps="false"/>
 
 
 </LinearLayout>
@@ -51,8 +52,8 @@
 
     <EditText
         android:id="@+id/scrn_output"
-        android:layout_width="291dp"
-        android:layout_height="90dp"
+        android:layout_width="300dp"
+        android:layout_height="75dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/scrn_input"
@@ -68,14 +69,15 @@
         android:textColor="#ffffff"
         android:textSize="40dp" />
 
-    <Spinner
-        android:id="@+id/spinner_outputUnit"
+
+
+    <Button
+        android:id="@+id/btn_out_test"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:text="m"
         android:background="@color/display_background"
-        android:dropDownWidth="100dp"
-        android:spinnerMode="dialog"
-        android:layout_alignParentTop="true" />
+        android:textAllCaps="false"/>
 </LinearLayout>
 
 </LinearLayout>

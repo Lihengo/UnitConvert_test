@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/spin_txt"
+        android:id="@+id/spout_txt"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:text="m"

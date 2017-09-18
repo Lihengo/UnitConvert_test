@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
@@ -29,7 +30,7 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 
-public class MainActivity extends Activity implements View.OnClickListener, AdapterView.OnItemSelectedListener, AdapterView.OnItemClickListener {
+public class MainActivity extends Activity implements View.OnClickListener,  AdapterView.OnItemClickListener {
     private Context mContext;
     private AlertDialog alert = null;
     private AlertDialog.Builder builder = null;
@@ -62,11 +63,27 @@ public class MainActivity extends Activity implements View.OnClickListener, Adap
     private Spinner spin_in;
     private Spinner spin_out;
 
+    private Button btn_in;
+    private Button btn_out;
+
+    private ListView lv_in;
+    private ListView lv_out;
+
+    private AlertDialog altDialog_in = null;
+    private AlertDialog.Builder builder_in = null;
+    private AlertDialog altDialog_out = null;
+    private AlertDialog.Builder builder_out = null;
+
+    private View listview_in;
+    private View listview_out;
 //    private AdapterView
 
     private MyAdapter<Unit> myAdapter_in = null;
     private MyAdapter<Unit> myAdapter_out = null;
     private MyAdapter<Unit> myAdapter_category = null;
+    private MyAdapter<Unit> myAdapter_btn_in = null;
+    private MyAdapter<Unit> myAdapter_btn_out = null;
+
 
     boolean inUnitSelected = false;
     boolean outUnitSelected = false;
@@ -75,6 +92,8 @@ public class MainActivity extends Activity implements View.OnClickListener, Adap
     private ArrayList<Unit> inputUnitList = null;
     private ArrayList<Unit> outputUnitList = null;
     private ArrayList<Unit> categoryList = null;
+    private ArrayList<Unit> in_txtArray = null;
+    private ArrayList<Unit> out_txtArray = null;
 
     String input_txt;
     String output_txt;
@@ -112,13 +131,19 @@ public class MainActivity extends Activity implements View.OnClickListener, Adap
         setContentView(R.layout.activity_main);
 
         mContext = MainActivity.this;
+        bindView();
+    }
 
+    private void bindView(){
         drawer_layout = (DrawerLayout) findViewById(R.id.drawer_layout);
         rightListDrawer = (ListView) findViewById(R.id.list_right_drawer);
 
         inputUnitList = new ArrayList<Unit>();
         outputUnitList = new ArrayList<Unit>();
         categoryList = new ArrayList<Unit>();
+
+        in_txtArray = new ArrayList<Unit>();
+        out_txtArray = new ArrayList<Unit>();
 
         topbar_btn = (ImageButton) findViewById(R.id.topbar_btn);
         topbar_name = (TextView) findViewById(R.id.topbar_name);
@@ -143,8 +168,10 @@ public class MainActivity extends Activity implements View.OnClickListener, Adap
         btn_negative = (Button) findViewById(R.id.btn_negative);
         btn_pi = (Button) findViewById(R.id.btn_pi);
 
-        spin_in = (Spinner) findViewById(R.id.spinner_inputUnit);
-        spin_out = (Spinner) findViewById(R.id.spinner_outputUnit);
+//        spin_in = (Spinner) findViewById(R.id.spinner_inputUnit);
+//        spin_out = (Spinner) findViewById(R.id.spinner_outputUnit);
+
+
 
         topbar_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -183,6 +210,9 @@ public class MainActivity extends Activity implements View.OnClickListener, Adap
         addUnitList(unitName_stringArray, unitValue_stringArray, outputUnitList);
         addUnitList(categoryName_stringArray, categoryIndex_stringArray, categoryList);
 
+        addUnitList(unitName_stringArray, unitValue_stringArray, in_txtArray);
+        addUnitList(unitName_stringArray, unitValue_stringArray, out_txtArray);
+
         myAdapter_in = new MyAdapter<Unit>(inputUnitList, R.layout.spinner_view) {
             @Override
             public void bindView(ViewHolder holder, Unit obj) {
@@ -190,10 +220,10 @@ public class MainActivity extends Activity implements View.OnClickListener, Adap
             }
         };
 
-        myAdapter_out = new MyAdapter<Unit>(outputUnitList, R.layout.spinner_view) {
+        myAdapter_out = new MyAdapter<Unit>(outputUnitList, R.layout.spinner_view_out) {
             @Override
             public void bindView(ViewHolder holder, Unit obj) {
-                holder.setText(R.id.spin_txt, obj.getUnitName());
+                holder.setText(R.id.spout_txt, obj.getUnitName());
             }
         };
 
@@ -204,90 +234,169 @@ public class MainActivity extends Activity implements View.OnClickListener, Adap
             }
         };
 
-        spin_in.setAdapter(myAdapter_in);
-        spin_out.setAdapter(myAdapter_out);
+
+
+//        spin_in.setAdapter(myAdapter_in);
+//        spin_out.setAdapter(myAdapter_out);
         rightListDrawer.setAdapter(myAdapter_category);
 
+
         rightListDrawer.setOnItemClickListener(this);
-        spin_in.setOnItemSelectedListener(this);
-        spin_out.setOnItemSelectedListener(this);
+//        spin_in.setOnItemSelectedListener(this);
+//        spin_out.setOnItemSelectedListener(this);
+
+
+        //-------------------------------------------------------------------test
+
+        btn_in = (Button) findViewById(R.id.btn_in_test);
+        btn_out = (Button) findViewById(R.id.btn_out_test);
+        btn_in.setOnClickListener(this);
+        btn_out.setOnClickListener(this);
+
+
+
+        builder_in = new AlertDialog.Builder(mContext);
+        builder_out = new AlertDialog.Builder(mContext);
+        final LayoutInflater inflater_in = MainActivity.this.getLayoutInflater();
+        final LayoutInflater inflater_out = MainActivity.this.getLayoutInflater();
+        listview_in = inflater_in.inflate(R.layout.unit_in_listview, null, false);
+        listview_out = inflater_out.inflate(R.layout.unit_out_listview, null, false);
+        builder_in.setView(listview_in);
+        builder_out.setView(listview_out);
+
+
+
+        altDialog_in = builder_in.create();
+        altDialog_out = builder_out.create();
+
+        lv_in = (ListView) listview_in.findViewById(R.id.lv_in);
+        lv_out = (ListView) listview_out.findViewById(R.id.lv_out);
+        lv_in.setAdapter(myAdapter_in);
+        lv_out.setAdapter(myAdapter_out);
+
+        lv_in.setOnItemClickListener(this);
+        lv_out.setOnItemClickListener(this);
+
+
+
+
+        //-------------------------------------------------------------------test
     }
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-        Resources res_new = getResources();
-        indexCategory = Integer.parseInt(categoryList.get(position).getUnitValue());
-        topbar_name.setText(categoryList.get(position).getUnitName());
-        unitName_stringArray = null;
-        unitValue_stringArray = null;
-        switch (indexCategory){
-            case 1:
-                unitName_stringArray = res_new.getStringArray(R.array.length_unitName);
-                unitValue_stringArray = res_new.getStringArray(R.array.length_unitValue);
-                break;
-            case 2 :
-                unitName_stringArray = res_new.getStringArray(R.array.mass_unitName);
-                unitValue_stringArray = res_new.getStringArray(R.array.mass_unitValue);
-                break;
-            case 3 :
-                unitName_stringArray = res_new.getStringArray(R.array.time_unitName);
-                unitValue_stringArray = res_new.getStringArray(R.array.time_unitValue);
-                break;
-            case 4 :
-                unitName_stringArray = res_new.getStringArray(R.array.current_unitName);
-                unitValue_stringArray = res_new.getStringArray(R.array.current_unitValue);
-                break;
-            case 5 :
-                unitName_stringArray = res_new.getStringArray(R.array.temperature_unitName);
-                unitValue_stringArray = res_new.getStringArray(R.array.temperature_unitValue);
-                break;
-            default:
-                unitName_stringArray = res_new.getStringArray(R.array.length_unitName);
-                unitValue_stringArray = res_new.getStringArray(R.array.length_unitValue);
+        switch (adapterView.getId()) {
+            case R.id.list_right_drawer:{
+                Resources res_new = getResources();
+                indexCategory = Integer.parseInt(categoryList.get(position).getUnitValue());
+                topbar_name.setText(categoryList.get(position).getUnitName());
+                unitName_stringArray = null;
+                unitValue_stringArray = null;
+                switch (indexCategory) {
+                    case 1:
+                        unitName_stringArray = res_new.getStringArray(R.array.length_unitName);
+                        unitValue_stringArray = res_new.getStringArray(R.array.length_unitValue);
+                        break;
+                    case 2:
+                        unitName_stringArray = res_new.getStringArray(R.array.mass_unitName);
+                        unitValue_stringArray = res_new.getStringArray(R.array.mass_unitValue);
+                        break;
+                    case 3:
+                        unitName_stringArray = res_new.getStringArray(R.array.time_unitName);
+                        unitValue_stringArray = res_new.getStringArray(R.array.time_unitValue);
+                        break;
+                    case 4:
+                        unitName_stringArray = res_new.getStringArray(R.array.current_unitName);
+                        unitValue_stringArray = res_new.getStringArray(R.array.current_unitValue);
+                        break;
+                    case 5:
+                        unitName_stringArray = res_new.getStringArray(R.array.temperature_unitName);
+                        unitValue_stringArray = res_new.getStringArray(R.array.temperature_unitValue);
+                        break;
+                    default:
+                        unitName_stringArray = res_new.getStringArray(R.array.length_unitName);
+                        unitValue_stringArray = res_new.getStringArray(R.array.length_unitValue);
+                        break;
+                }
+                addUnitList(unitName_stringArray, unitValue_stringArray, inputUnitList);
+                addUnitList(unitName_stringArray, unitValue_stringArray, outputUnitList);
+                Toast.makeText(mContext, "index~：" + indexCategory + " " + inputUnitList.size(), Toast.LENGTH_SHORT).show();
+                btn_in.setText(inputUnitList.get(0).getUnitName());
+                btn_out.setText(outputUnitList.get(0).getUnitName());
+                numerator = new BigDecimal(inputUnitList.get(0).getUnitValue());
+                denominator = new BigDecimal(outputUnitList.get(0).getUnitValue());
+                test_num = numerator.divide(denominator, 10, RoundingMode.HALF_UP);
+                test_num = new BigDecimal(myRounding(test_num));
+//                spin_in.setAdapter(myAdapter_in);
+//                spin_out.setAdapter(myAdapter_out);
+                lv_in.setAdapter(myAdapter_in);
+                lv_out.setAdapter(myAdapter_out);
+                drawer_layout.closeDrawer(Gravity.START);
+                clear_num();
                 break;
         }
-        addUnitList(unitName_stringArray,unitValue_stringArray,inputUnitList);
-        addUnitList(unitName_stringArray,unitValue_stringArray,outputUnitList);
-        Toast.makeText(mContext,"index~："+indexCategory+" "+inputUnitList.size(),Toast.LENGTH_SHORT).show();
-        spin_in.setAdapter(myAdapter_in);
-        spin_out.setAdapter(myAdapter_out);
-        drawer_layout.closeDrawer(Gravity.START);
-        clear_num();
-
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        switch (parent.getId()){
-
-            case R.id.spinner_inputUnit:
-                if(inUnitSelected){
-                    numerator = new BigDecimal(inputUnitList.get(position).getUnitValue());
-                }
-                else{
-                    inUnitSelected = true;
-                }
-                break;
-            case R.id.spinner_outputUnit:
-                if(outUnitSelected){
-                    denominator = new BigDecimal(outputUnitList.get(position).getUnitValue());
-                }
-                else{
-                    outUnitSelected = true;
-                }
-                break;
-        }
-        test_num = numerator.divide(denominator, 10, RoundingMode.HALF_UP);
-        test_num = new BigDecimal(myRounding(test_num));
+            case R.id.lv_in:{
+                numerator = new BigDecimal(inputUnitList.get(position).getUnitValue());
+                altDialog_in.dismiss();
+                btn_in.setText(inputUnitList.get(position).getUnitName());
+                test_num = numerator.divide(denominator, 10, RoundingMode.HALF_UP);
+                test_num = new BigDecimal(myRounding(test_num));
 //        Toast.makeText(mContext,"test_num~："+test_num.toPlainString(),Toast.LENGTH_SHORT).show();
-        output_txt = output2txt(input_num, test_num, tenToPow, isScientificLocked);
-        scrn_output.setText(output_txt);
+                output_txt = output2txt(input_num, test_num, tenToPow, isScientificLocked);
+                scrn_output.setText(output_txt);
+                break;
+            }
+            case R.id.lv_out:{
+                denominator = new BigDecimal(outputUnitList.get(position).getUnitValue());
+                altDialog_out.dismiss();
+                btn_out.setText(outputUnitList.get(position).getUnitName());
+                test_num = numerator.divide(denominator, 10, RoundingMode.HALF_UP);
+                test_num = new BigDecimal(myRounding(test_num));
+//        Toast.makeText(mContext,"test_num~："+test_num.toPlainString(),Toast.LENGTH_SHORT).show();
+                output_txt = output2txt(input_num, test_num, tenToPow, isScientificLocked);
+                scrn_output.setText(output_txt);
+                break;
+            }
+
+        }
+
     }
 
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
-    }
+//    @Override
+//    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//        switch (parent.getId()){
+//
+//            case R.id.spinner_inputUnit:
+//                if(inUnitSelected){
+//                    numerator = new BigDecimal(inputUnitList.get(position).getUnitValue());
+//                }
+//                else{
+//                    inUnitSelected = true;
+//                }
+//                break;
+//            case R.id.spinner_outputUnit:
+//                if(outUnitSelected){
+//                    denominator = new BigDecimal(outputUnitList.get(position).getUnitValue());
+//                }
+//                else{
+//                    outUnitSelected = true;
+//                }
+//                break;
+//
+//
+//
+//        }
+//        test_num = numerator.divide(denominator, 10, RoundingMode.HALF_UP);
+//        test_num = new BigDecimal(myRounding(test_num));
+////        Toast.makeText(mContext,"test_num~："+test_num.toPlainString(),Toast.LENGTH_SHORT).show();
+//        output_txt = output2txt(input_num, test_num, tenToPow, isScientificLocked);
+//        scrn_output.setText(output_txt);
+//    }
+//
+//    @Override
+//    public void onNothingSelected(AdapterView<?> adapterView) {
+//
+//    }
 
 
     @Override
@@ -334,6 +443,12 @@ public class MainActivity extends Activity implements View.OnClickListener, Adap
                 break;
             case R.id.btn_pi:
                 break;
+            case R.id.btn_in_test:
+                altDialog_in.show();
+                break;
+            case R.id.btn_out_test:
+                altDialog_out.show();
+                break;
         }
         input_txt = num2txt(input_num);
         output_txt = output2txt(input_num, test_num, tenToPow, isScientificLocked);
@@ -356,9 +471,15 @@ public class MainActivity extends Activity implements View.OnClickListener, Adap
         BigDecimal newNum = new BigDecimal(in_txt);
 
         if(isScientificLocked == true){ //do not modify the in_num, just add the new num to the tenToPow
-            if(tenToPow < 1000000) {
+            if(tenToPow < 1000000 ) {
                 counter_scientificDigit++;
-                tenToPow = tenToPow * 10 + newNum.intValue();
+                if(tenToPow>=0){
+                    tenToPow = tenToPow * 10 + newNum.intValue();
+                }
+                else{
+                    tenToPow = tenToPow * 10 - newNum.intValue();
+                }
+
             }
             else{
                 alert = null;
@@ -377,13 +498,25 @@ public class MainActivity extends Activity implements View.OnClickListener, Adap
         else if(isDotLocked == true){
             counter_decimalDigit++;
             newNum = newNum.movePointLeft(counter_decimalDigit);
-            res_num = in_num.add(newNum);
+            if(in_num.compareTo(BigDecimal.ZERO) != -1){
+                res_num = in_num.add(newNum);
+            }
+            else{
+                res_num = in_num.subtract(newNum);
+            }
+
         }
         else {
             if(input_num.doubleValue() != 0.0d){
                 counter_integerDigit++;
             }
-            res_num = (in_num.multiply(ten)).add(newNum);
+            if(in_num.compareTo(BigDecimal.ZERO) != -1){
+                res_num = (in_num.multiply(ten)).add(newNum);
+            }
+            else{
+                res_num = (in_num.multiply(ten)).subtract(newNum);
+            }
+
         }
         return res_num;
     }
@@ -405,7 +538,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Adap
             }
             res_num = in_num;
         }
-        else if(isDotLocked == true){
+        else if(isDotLocked == true){    //-----------------------------have bug, try test the dot mode and press back
             if(counter_decimalDigit <= 1){
                 isDotLocked = false;
                 counter_decimalDigit = 0;
@@ -479,6 +612,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Adap
         isDotLocked = false;
         isScientificLocked = false;
         scrn_input.setText(input_txt);
+        output_txt = output2txt(input_num, test_num, tenToPow, isScientificLocked);
         scrn_output.setText(output_txt);
         return;
     }
@@ -544,6 +678,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Adap
                 res_num = in_num.subtract(two_hun).multiply(one_eight).add(thirty_two);
                 res_str = format_dot(res_num, 2);
             }
+            res_str = "=" + res_str;
         }
         else {
             if (isScientificLocked == true) {

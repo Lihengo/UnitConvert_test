@@ -4,13 +4,13 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/spin_txt"
+        android:id="@+id/lv_out_txt"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="match_parent"
         android:text="m"
         android:textColor="#000000"
         android:background="#ffffff"
-        android:gravity="center_vertical"
+        android:gravity="bottom"
         android:textSize="30dp"/>
 
 </LinearLayout>

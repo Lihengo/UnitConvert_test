@@ -6,9 +6,10 @@
     <TextView
         android:id="@+id/category_txt"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="50dp"
         android:text="Length"
         android:textColor="#737373"
-        android:textSize="25dp"/>
+        android:textSize="30dp"
+        android:gravity="center_vertical"/>
 
 </LinearLayout>

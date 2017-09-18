@@ -8,7 +8,7 @@
         android:layout_height="150dp"
         android:text="Category"
         android:textSize="50dp"
-        android:textColor="#fff5b2"
+        android:textColor="@color/btn_text_color"
         android:background="@color/drawerTitle_background"/>
 
     <ListView

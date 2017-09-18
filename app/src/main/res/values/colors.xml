@@ -4,9 +4,10 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
-    <color name="topbar_background">#2d65c7</color>
-    <color name="display_background">#87ff5c</color>
-    <color name="pannel_background">#7b0029</color>
-    <color name="drawerTitle_background">#8a99ff</color>
-    <color name="drawerItemSelected_background">#ffe431</color>
+    <color name="topbar_background">#008ba2</color>
+    <color name="display_background">#00bbd3</color>
+    <color name="pannel_background">#62eeff</color>
+    <color name="drawerTitle_background">#d4e157</color>
+    <color name="drawerItemSelected_background">#ffff89</color>
+    <color name="btn_text_color">#454545</color>
 </resources>
